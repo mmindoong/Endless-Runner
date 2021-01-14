@@ -12,16 +12,19 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed = 0;
 
     Vector2 startPosition;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         startPosition = transform.position;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("move", true);
         if(Input.GetMouseButtonDown(0))
         {
             isJump = true;
