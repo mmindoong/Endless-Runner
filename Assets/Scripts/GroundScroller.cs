@@ -4,22 +4,38 @@ using UnityEngine;
 
 public class GroundScroller : MonoBehaviour
 {
-    public SpriteRenderer[] tiles;
-    public float speed;
+    public Sprite Land;
+    public Sprite Background;
+    public float scrollSpeed;
+    private SpriteRenderer Scroller;
+    private Vector2 scrollOffset = Vector2.zero;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Scroller = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0;i<tiles.Length;i++)
+        if (!GameManager.instance.gameOver)
         {
-            tiles[i].transform.Translate(new Vector2(-1, 0) * Time.deltaTime *speed);
+            scrollOffset = Scroller.material.mainTextureOffset;
+            scrollOffset.x += (scrollSpeed * Time.deltaTime);
+            Scroller.material.mainTextureOffset = scrollOffset;
         }
-        
+
+        switch (GameManager.instance.stage)
+        {
+            case 2:
+                Scroller.sprite = Background;
+                Scroller.transform.localScale = new Vector3(4.15f, 3.112499f, 1.0f);
+                break;
+            case 3:
+                Scroller.sprite = Land;
+                Scroller.transform.localScale = new Vector3(15.67497f, 12.37498f, 1.0f);
+                break;
+        }
     }
 }
