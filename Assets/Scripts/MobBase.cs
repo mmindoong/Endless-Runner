@@ -5,7 +5,12 @@ using UnityEngine;
 public class MobBase : MonoBehaviour
 {
     public float mobSpeed = 0;
+    public Vector2 startPosition;
 
+    private void OnEnable()
+    {
+        transform.position = startPosition;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +21,10 @@ public class MobBase : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.left * Time.deltaTime * mobSpeed);
+
+        if(transform.position.x < -6)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

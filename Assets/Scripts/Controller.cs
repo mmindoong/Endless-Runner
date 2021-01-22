@@ -29,18 +29,18 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if(jumpCount > 0 && isjump)
+        if(Input.GetKeyDown(KeyCode.UpArrow) && !isjump)
         {
             player.velocity = (Vector2.up * POWER);
             animator.SetInteger("move", jumpCount);
-            isjump = false;
+            isjump = true;
         }
         
     }
 
     private void Update()
     {
-  
+
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             animator.SetBool("move", false);
@@ -53,17 +53,25 @@ public class Controller : MonoBehaviour
             animator.SetBool("slide", false);
             animator.SetBool("move", true);
             isslide = false;
-   
+
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && ! isslide)
-        {
-            jumpCount++;
-            isjump = true;
-            animator.SetBool("Idle", false);
-        }
-    
+        
+    }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       if(collision.tag.Equals("Land"))
+            {
+            isjump = false;
+            
+            }
 
     }
+
+
+
+
 }
+
