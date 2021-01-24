@@ -242,7 +242,7 @@ MonoBehaviour:
   MobPool: []
   Mobs:
   - {fileID: 5934742701391890771, guid: d63b7ce76d42e9848b07e17a04eeda8d, type: 3}
-  - {fileID: 8648407209496738406, guid: 72ff08493ec6dcb4f98903873e602897, type: 3}
+  - {fileID: 7324755933636042078, guid: 1fee798c53fc39a41a5a543b9184c9d1, type: 3}
   objCnt: 3
 --- !u!4 &357712196
 Transform:
