@@ -28,7 +28,7 @@ public class RespawnManager : MonoBehaviour
         while (true)
         {
             MobPool[DeactiveMob()].SetActive(true);
-            yield return new WaitForSeconds(Random.Range(1f, 6f));
+            yield return new WaitForSeconds(4f);
         }
     }
 
